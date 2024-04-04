@@ -1,0 +1,9 @@
+[package]
+exclude = ["tmp", "~/.cargo-target/*"]
+resolver = "2"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.metadata.cyclonedx]
+included_dependencies = "all"
