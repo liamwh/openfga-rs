@@ -1,0 +1,9 @@
+[package]
+include = ["src", "LICENSE-APACHE", "LICENSE-MIT", "README.md"]
+resolver = "2"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.metadata.cyclonedx]
+included_dependencies = "all"
