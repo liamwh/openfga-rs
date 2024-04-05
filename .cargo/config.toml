@@ -1,5 +1,5 @@
 [package]
-include = ["src", "LICENSE-APACHE", "LICENSE-MIT", "README.md", "proto"]
+# include = ["src", "LICENSE-APACHE", "LICENSE-MIT", "README.md", "proto"]
 resolver = "2"
 
 [workspace.lints.rust]
