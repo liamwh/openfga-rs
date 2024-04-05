@@ -158,6 +158,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Check unused dependencies
     steps:
+      - uses: actions/checkout@v3
+
       - name: Install nightly toolchain
         uses: dtolnay/rust-toolchain@nightly
 
