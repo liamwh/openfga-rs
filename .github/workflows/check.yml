@@ -13,10 +13,18 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt
+
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-targets: "true"
+          cache-all-crates: "true"
+
       - name: cargo fmt --check
         run: cargo fmt --check
 
@@ -53,6 +61,12 @@ jobs:
           toolchain: ${{ matrix.toolchain }}
           components: clippy
 
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-targets: "true"
+          cache-all-crates: "true"
+
       - name: cargo clippy
         uses: actions-rs/clippy-check@v1
         with:
@@ -68,6 +82,12 @@ jobs:
 
       - name: Install nightly
         uses: dtolnay/rust-toolchain@nightly
+
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-targets: "true"
+          cache-all-crates: "true"
 
       - uses: taiki-e/install-action@just
 
@@ -93,8 +113,15 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-targets: "true"
+          cache-all-crates: "true"
 
       - uses: taiki-e/install-action@just
 
@@ -133,6 +160,12 @@ jobs:
 
       - uses: taiki-e/install-action@protoc
 
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-targets: "true"
+          cache-all-crates: "true"
+
       - name: Install cargo udeps
         run: cargo install cargo-udeps --locked
 
@@ -156,3 +189,32 @@ jobs:
       - uses: EmbarkStudios/cargo-deny-action@v1
         with:
           command: check ${{ matrix.checks }}
+
+  sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Install stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-targets: "true"
+          cache-all-crates: "true"
+
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-cyclonedx
+
+      - name: Generate SBOM
+        run: cargo cyclonedx
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v3
+        with:
+          name: openfga-rs-sbom
+          path: bom.xml
