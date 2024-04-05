@@ -14,28 +14,10 @@ fn main() -> Result<()> {
         .extern_path(".google.protobuf.ListValue", "::prost_wkt_types::ListValue")
         .extern_path(".google.protobuf.Any", "::prost_wkt_types::Any")
         .file_descriptor_set_path(&descriptor_file);
-    //     .compile_protos(
-    //         &[
-    //             "proto/openfga/v1/authzmodel.proto",
-    //             "proto/openfga/v1/errors_ignore.proto",
-    //             "proto/openfga/v1/openapi.proto",
-    //             "proto/openfga/v1/openfga.proto",
-    //             "proto/openfga/v1/openfga_service.proto",
-    //         ],
-    //         &["proto/"],
-    //     )
-    //     .expect("failed to compile protos");
 
     tonic_build::configure()
-        // .type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]")
         .build_server(false)
         .build_client(true)
-        // .extern_path(".google.protobuf.Timestamp", "::prost_wkt_types::Timestamp")
-        // .extern_path(".google.protobuf.Struct", "::prost_wkt_types::Struct")
-        // .extern_path(".google.protobuf.Value", "::prost_wkt_types::Value")
-        // .extern_path(".google.protobuf.ListValue", "::prost_wkt_types::ListValue")
-        // .extern_path(".google.protobuf.Any", "::prost_wkt_types::Any")
-        // .file_descriptor_set_path(&descriptor_file)
         .compile_with_config(
             prost_build,
             &[
