@@ -1,0 +1,3 @@
+[workspace]
+allow_dirty = true         # allow updating repositories with uncommitted changes
+publish_allow_dirty = true # add `--allow-dirty` to `cargo publish`
