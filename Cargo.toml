@@ -6,6 +6,16 @@ license = "MIT OR Apache-2.0"
 description = "Rust SDK for the OpenFGA"
 repository = "https://github.com/liamwh/openfga-rs.git"
 authors = ["Liam Woodleigh-Hardinge", "liam.woodleigh@gmail.com"]
+include = [
+    "/src",
+    "**/**.rs",
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    "README.md",
+    "!tmp/**",
+    "/proto/**",
+]
+resolver = "2"
 
 [dependencies]
 tonic = { version = "~0.11", features = ["tls"] }
