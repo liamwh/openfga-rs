@@ -1,9 +1,12 @@
 use prost_wkt_build::*;
 use std::{env, io::Result, path::PathBuf};
 
+const PROTO_DEFAULT_DIR: &str = "proto";
+
 fn main() -> Result<()> {
     let out = PathBuf::from(env::var("OUT_DIR").unwrap());
-
+    let proto_dir: PathBuf =
+        PathBuf::from(env::var("PROTO_DIR").unwrap_or(PROTO_DEFAULT_DIR.to_string()));
     let proto_files = &[
         "proto/openfga/v1/authzmodel.proto",
         "proto/openfga/v1/errors_ignore.proto",
@@ -11,7 +14,9 @@ fn main() -> Result<()> {
         "proto/openfga/v1/openfga.proto",
         "proto/openfga/v1/openfga_service.proto",
     ];
-    let includes = &["proto"];
+    let includes = &[proto_dir
+        .to_str()
+        .expect("expected proto dir to convert to str")];
     let descriptor_file = out.join("descriptors.bin");
 
     let mut prost_build = prost_build::Config::new();
