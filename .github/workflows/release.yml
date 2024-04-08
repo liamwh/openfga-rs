@@ -45,12 +45,6 @@ jobs:
       - name: Generate the library
         run: just generate
 
-      - name: List Proto Files
-        run: |
-          pwd
-          ls -lah .
-          ls -alh proto/openfga/v1/
-
       - name: Run release-plz
         uses: MarcoIeni/release-plz-action@v0.5
         env:
