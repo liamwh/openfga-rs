@@ -19,7 +19,7 @@ resolver = "2"
 
 [dependencies]
 tonic = { version = "~0.11", features = ["tls"] }
-prost = { version = "~0.12", features = ["std", "prost-derive"] }
+prost = { version = "~0.13", features = ["std", "prost-derive"] }
 prost-types = "~0.12"
 prost-wkt = "~0.5"
 prost-wkt-types = "~0.5"
