@@ -1,6 +1,5 @@
 # Repository specific gitignores
 tmp/
-proto/
 buf.gen.yaml
 buf.yaml
 buf.lock
@@ -63,7 +62,6 @@ coverage/*
 
 docker/**/data
 
-
 **/frontend/src/bindings/*
 
 # Volume mounts
@@ -96,7 +94,6 @@ coverage
 out/
 build
 dist
-
 
 # Debug
 npm-debug.log*

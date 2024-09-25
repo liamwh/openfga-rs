@@ -42,9 +42,6 @@ jobs:
       - name: List dir contents
         run: ls -alh .
 
-      - name: Generate the library
-        run: just generate
-
       - name: Run release-plz
         uses: MarcoIeni/release-plz-action@v0.5
         env:
