@@ -9,9 +9,8 @@ proto-dest-dir := "./proto"
 default:
     @just --list --justfile {{justfile()}}
 
-# Generate the library
-generate: clone copy-buf-files export
-    cargo build
+# Update the protobuf files
+update: clone copy-buf-files export
 
 # Clone the api repo
 clone:
