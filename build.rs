@@ -19,7 +19,7 @@ fn main() -> Result<()> {
         .expect("expected proto dir to convert to str")];
     let descriptor_file = out.join("descriptors.bin");
 
-    let mut prost_build = prost_build::Config::new();
+    let mut prost_build = tonic_build::Config::new();
     prost_build
         .type_attribute(".", "#[derive(serde::Serialize,serde::Deserialize)]")
         .extern_path(".google.protobuf.Timestamp", "::prost_wkt_types::Timestamp")
@@ -32,7 +32,7 @@ fn main() -> Result<()> {
     tonic_build::configure()
         .build_server(false)
         .build_client(true)
-        .compile_with_config(prost_build, proto_files, includes)
+        .compile_protos_with_config(prost_build, proto_files, includes)
         .unwrap_or_else(|e| {
             let current_dir = env::current_dir()
                 .expect("expected to get current dir")
