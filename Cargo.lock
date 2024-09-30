@@ -578,7 +578,6 @@ name = "openfga-rs"
 version = "0.1.0"
 dependencies = [
  "prost 0.13.3",
- "prost-build 0.12.6",
  "prost-types 0.12.6",
  "prost-wkt",
  "prost-wkt-build",
@@ -686,27 +685,6 @@ dependencies = [
 
 [[package]]
 name = "prost-build"
-version = "0.12.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "22505a5c94da8e3b7c2996394d1c933236c4d743e81a410bcca4e6989fc066a4"
-dependencies = [
- "bytes",
- "heck",
- "itertools 0.12.1",
- "log",
- "multimap",
- "once_cell",
- "petgraph",
- "prettyplease",
- "prost 0.12.6",
- "prost-types 0.12.6",
- "regex",
- "syn",
- "tempfile",
-]
-
-[[package]]
-name = "prost-build"
 version = "0.13.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0c1318b19085f08681016926435853bbf7858f9c082d0999b80550ff5d9abe15"
@@ -793,7 +771,7 @@ checksum = "8a669d5acbe719010c6f62a64e6d7d88fdedc1fe46e419747949ecb6312e9b14"
 dependencies = [
  "heck",
  "prost 0.13.3",
- "prost-build 0.13.3",
+ "prost-build",
  "prost-types 0.13.3",
  "quote",
 ]
@@ -806,7 +784,7 @@ checksum = "01ef068e9b82e654614b22e6b13699bd545b6c0e2e721736008b00b38aeb4f64"
 dependencies = [
  "chrono",
  "prost 0.13.3",
- "prost-build 0.13.3",
+ "prost-build",
  "prost-types 0.13.3",
  "prost-wkt",
  "prost-wkt-build",
@@ -1185,7 +1163,7 @@ checksum = "9557ce109ea773b399c9b9e5dca39294110b74f1f342cb347a80d1fce8c26a11"
 dependencies = [
  "prettyplease",
  "proc-macro2",
- "prost-build 0.13.3",
+ "prost-build",
  "prost-types 0.13.3",
  "quote",
  "syn",
