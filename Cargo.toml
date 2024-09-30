@@ -24,6 +24,17 @@ prost-types = "~0.13"
 prost-wkt = "~0.6"
 prost-wkt-types = "~0.6"
 serde = { version = "~1.0", features = ["derive"] }
+http = "1"
+veil = "~0.1"
+chrono = "~0.4"
+reqwest = { version = "~0.12", features = ["json"] }
+tokio = { version = "~1.40" }
+thiserror = "~1.0"
+serde_json = "~1.0"
+
+[dev-dependencies]
+tokio = { version = "~1.40", features = ["full"] }
+mockito = "~1.5"
 
 [build-dependencies]
 tonic-build = { version = "~0.12" }
