@@ -9,25 +9,9 @@ proto-dest-dir := "./proto"
 default:
     @just --list --justfile {{justfile()}}
 
-# Update the protobuf files
-update: clone copy-buf-files export
-
-# Clone the api repo
-clone:
-    rm -rf {{ clone-dir }}
-    git clone https://github.com/openfga/api.git {{ clone-dir }}
-
-# Copy the dependencies from the cloned repo to the root directory
-copy-buf-files:
-    rm -f ./buf.gen.yaml
-    rm -f ./buf.yaml
-    cp {{ clone-dir }}/buf.gen.yaml ./buf.gen.yaml
-    cp {{ clone-dir }}/buf.yaml ./buf.yaml
-
-[private]
-export:
-    mkdir -p {{ proto-dest-dir }}
-    buf export {{ clone-dir }} --output {{ proto-dest-dir }}
+# Update the generated rust code from the protobuf files
+update: 
+    buf generate https://github.com/openfga/api#format=git
 
 # Run cargo doc
 doc $RUSTDOCFLAGS="-D warnings":

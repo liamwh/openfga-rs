@@ -17,6 +17,9 @@ include = [
 ]
 resolver = "2"
 
+[features]
+vendored-protoc = ["prost-wkt-types/vendored-protoc"]
+
 [dependencies]
 tonic = { version = "~0.12", features = ["tls"] }
 prost = { version = "~0.13", features = ["std", "prost-derive"] }

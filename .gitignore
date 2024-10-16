@@ -1,6 +1,5 @@
 # Repository specific gitignores
 tmp/
-buf.gen.yaml
 buf.yaml
 buf.lock
 
